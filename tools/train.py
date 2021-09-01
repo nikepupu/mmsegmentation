@@ -88,13 +88,20 @@ def main():
     else:
         cfg.gpu_ids = range(1) if args.gpus is None else range(args.gpus)
 
+    
+ 
+    
     # init distributed env first, since logger depends on the dist info.
     if args.launcher == 'none':
         distributed = False
     else:
         distributed = True
         init_dist(args.launcher, **cfg.dist_params)
-
+   
+    norm_cfg = dict(type='BN', requires_grad=True)
+    cfg.model.backbone.norm_cfg = norm_cfg
+    cfg.model.decode_head.norm_cfg = norm_cfg
+    cfg.model.auxiliary_head.norm_cfg = norm_cfg
     # create work_dir
     mmcv.mkdir_or_exist(osp.abspath(cfg.work_dir))
     # dump config
