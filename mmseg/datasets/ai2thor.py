@@ -19,7 +19,7 @@ class AI2ThorDataset(CustomDataset):
     '.png'.
     """
     CLASSES = (
-       'background', 'floor', 'alarmclock', 'apple', 'armchair', 'baseballbat', 'basketball', 'bathtub', 'bathtubbasin',
+       'floor', 'alarmclock', 'apple', 'armchair', 'baseballbat', 'basketball', 'bathtub', 'bathtubbasin',
        'bed', 'blinds', 'book', 'boots', 'bowl', 'box', 'bread', 'butterknife', 'cabinet', 'candle', 'cart', 'cd', 
        'cellphone', 'chair', 'cloth', 'coffeemachine', 'countertop', 'creditcard', 'cup', 'curtains', 'desk', 'desklamp', 
        'dishsponge', 'drawer', 'dresser', 'egg', 'floorlamp', 'footstool', 'fork', 'fridge', 'garbagecan', 'glassbottle', 
@@ -98,6 +98,7 @@ class AI2ThorDataset(CustomDataset):
             list[str: str]: result txt files which contains corresponding
             semantic segmentation images.
         """
+        
         if indices is None:
             indices = list(range(len(self)))
 

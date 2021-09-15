@@ -98,10 +98,13 @@ def main():
         distributed = True
         init_dist(args.launcher, **cfg.dist_params)
    
-    norm_cfg = dict(type='BN', requires_grad=True)
-    cfg.model.backbone.norm_cfg = norm_cfg
-    cfg.model.decode_head.norm_cfg = norm_cfg
-    cfg.model.auxiliary_head.norm_cfg = norm_cfg
+    # for single gpu
+    
+    # norm_cfg = dict(type='BN', requires_grad=True)
+    # cfg.model.backbone.norm_cfg = norm_cfg
+    # cfg.model.decode_head.norm_cfg = norm_cfg
+    # cfg.model.auxiliary_head.norm_cfg = norm_cfg
+
     # create work_dir
     mmcv.mkdir_or_exist(osp.abspath(cfg.work_dir))
     # dump config
